@@ -12,13 +12,21 @@
   <script>
     window.onload = function() {
       var screen = document.getElementById("screen");
-      var two = new Two({width: 800, height: 600});
+      var two = new Two({width: 800, height: 700});
       two.appendTo(screen);
-      var shape = two.makePolygon(100, 100,
-                                  150, 100,
-                                  150, 150,
-                                  100, 150);
-      shape.fill = "lightblue"
+      
+      var lista = [[300,100],[200,200],[200,300],[300,600]];
+     
+      var point= function (x,y) {
+        var shape = two.makePolygon (x-50,y-50,x-50,y+50,x+50,y+50,x+50,y-50);
+        return shape;
+      };
+     
+      lista.forEach(function(elem){
+        var rect = point(elem[0], elem[1])
+        rect.fill = "YellowGreen";
+      });
+          
       two.update();
     };
   </script>
